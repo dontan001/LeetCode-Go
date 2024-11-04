@@ -1,13 +1,8 @@
 package leetcode
 
-type Node struct {
-	digit int
-	next  *Node
-}
+func TwoAddV1(one *ListNode, another *ListNode) *ListNode {
 
-func TwoAddV1(one *Node, another *Node) *Node {
-
-	head := &Node{}
+	head := &ListNode{}
 	currentHead := head
 
 	currentOne := one
@@ -15,13 +10,13 @@ func TwoAddV1(one *Node, another *Node) *Node {
 	carry := 0
 	for currentOne != nil || currentAnother != nil {
 		if currentOne == nil {
-			currentOne = &Node{0, nil}
+			currentOne = &ListNode{0, nil}
 		}
 		if currentAnother == nil {
-			currentAnother = &Node{0, nil}
+			currentAnother = &ListNode{0, nil}
 		}
 
-		currentDigit := currentOne.digit + currentAnother.digit + carry
+		currentDigit := currentOne.Val + currentAnother.Val + carry
 		if currentDigit >= 10 {
 			carry = 1
 			currentDigit = currentDigit - 10
@@ -29,16 +24,16 @@ func TwoAddV1(one *Node, another *Node) *Node {
 			carry = 0
 		}
 
-		currentHead.digit = currentDigit
-		currentHead.next = &Node{0, nil}
-		if currentOne.next == nil && currentAnother.next == nil {
-			currentHead.next.digit = carry
+		currentHead.Val = currentDigit
+		currentHead.Next = &ListNode{0, nil}
+		if currentOne.Next == nil && currentAnother.Next == nil {
+			currentHead.Next.Val = carry
 			break
 		}
 
-		currentHead = currentHead.next
-		currentOne = currentOne.next
-		currentAnother = currentAnother.next
+		currentHead = currentHead.Next
+		currentOne = currentOne.Next
+		currentAnother = currentAnother.Next
 	}
 
 	return head
