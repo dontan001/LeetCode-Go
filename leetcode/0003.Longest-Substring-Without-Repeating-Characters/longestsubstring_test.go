@@ -38,11 +38,18 @@ func TestLongestSubstring(t *testing.T) {
 		sub := LongestSubstringNoRepeating(input)
 		t.Logf("The substring of %s is %s", input, sub)
 	})
+}
 
-	// TODO fix
-	t.Run("case 7", func(t *testing.T) {
+func TestLongestSubstringNoRepeatingV2(t *testing.T) {
+	t.Run("case 1", func(t *testing.T) {
 		input := "dvdf"
-		sub := LongestSubstringNoRepeating(input)
-		t.Logf("The substring of %s is %s", input, sub) // should be vdf
+		max := LongestSubstringNoRepeatingV2(input)
+		t.Logf("The max length of substring is %d", max)
+	})
+
+	t.Run("case 2", func(t *testing.T) {
+		input := "abcdefcghifmj"
+		max := LongestSubstringNoRepeatingV2(input)
+		t.Logf("The max length of substring is %d", max)
 	})
 }
