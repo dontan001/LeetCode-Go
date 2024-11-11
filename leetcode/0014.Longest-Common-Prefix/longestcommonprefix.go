@@ -1,6 +1,9 @@
 package leetcode
 
 func LongestCommonPrefix(strs []string) string {
+	if len(strs) == 1 {
+		return strs[0]
+	}
 
 	var prefix string = ""
 	for i := 0; i < len(strs[0]); i++ {
