@@ -10,4 +10,11 @@ func TestThreeSumClosestBruteForce(t *testing.T) {
 		sum := ThreeSumClosestBruteForce(nums, target)
 		t.Log(sum)
 	})
+
+	t.Run("case 2", func(t *testing.T) {
+		nums := []int{-1, 2, 1, -4}
+		target := 1
+		sum := ThreeSumClosest(nums, target)
+		t.Log(sum)
+	})
 }
