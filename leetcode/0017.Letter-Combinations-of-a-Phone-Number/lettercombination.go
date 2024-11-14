@@ -19,6 +19,31 @@ func LetterCombinations(digits string) []string {
 	return combine(digits)
 }
 
+func LetterCombinationsWithLoop(digits string) []string {
+	allCombinations := []string{}
+
+	for len(digits) > 0 {
+		combinations := []string{}
+
+		letters := DigitToLetters[string(digits[0])]
+		for _, letter := range letters {
+			if len(allCombinations) == 0 {
+				combinations = append(combinations, letter)
+				continue
+			}
+
+			for _, combination := range allCombinations {
+				combinations = append(combinations, combination+letter)
+			}
+		}
+
+		allCombinations = combinations
+		digits = digits[1:]
+	}
+
+	return allCombinations
+}
+
 func combine(digits string) []string {
 	letters := DigitToLetters[string(digits[0])]
 	if len(digits) == 1 {

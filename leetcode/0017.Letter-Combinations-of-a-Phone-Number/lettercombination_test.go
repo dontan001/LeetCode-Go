@@ -21,4 +21,16 @@ func TestLetterCombinations(t *testing.T) {
 		combinations := LetterCombinations(digits)
 		t.Logf("all combinations: %+v", combinations)
 	})
+
+	t.Run("case 5", func(t *testing.T) {
+		digits := "23"
+		combinations := LetterCombinationsWithLoop(digits)
+		t.Logf("all combinations: %+v", combinations)
+	})
+
+	t.Run("case 6", func(t *testing.T) {
+		digits := "2347"
+		combinations := LetterCombinationsWithLoop(digits)
+		t.Logf("all combinations: %+v", combinations)
+	})
 }
