@@ -19,3 +19,25 @@ func Subsets(nums []int) [][]int {
 
 	return subsetsAll
 }
+
+func SubsetMask(nums []int) [][]int {
+	if len(nums) == 0 {
+		return [][]int{}
+	}
+
+	subsetsAll := make([][]int, 0)
+	size := len(nums)
+	for i := 0; i < (1 << size); i++ {
+		subset := []int{}
+		for j := 0; j < size; j++ {
+			include := i & (1 << j)
+			if include > 0 {
+				subset = append(subset, nums[size-j-1])
+			}
+		}
+
+		subsetsAll = append(subsetsAll, subset)
+	}
+
+	return subsetsAll
+}
