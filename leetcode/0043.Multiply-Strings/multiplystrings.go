@@ -19,9 +19,8 @@ func Multiply(num1 string, num2 string) string {
 	for i := 0; i < size; i++ {
 		if product[i] == 0 && len(result) == 0 {
 			continue
-		} else {
-			result += strconv.Itoa(product[i])
 		}
+		result += strconv.Itoa(product[i])
 	}
 
 	if result == "" {
