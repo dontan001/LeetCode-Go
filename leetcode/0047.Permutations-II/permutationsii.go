@@ -31,8 +31,8 @@ func PermuteUnique(nums []int) [][]int {
 
 	sort.Ints(nums)
 	var permutations [][]int
-	var dopermute func([]int)
-	dopermute = func(permutation []int) {
+	var backtrack func([]int)
+	backtrack = func(permutation []int) {
 		if len(permutation) == len(nums) {
 			found := []int{}
 			found = append(found, permutation...)
@@ -47,13 +47,13 @@ func PermuteUnique(nums []int) [][]int {
 				continue
 			}
 			permutation = append(permutation, remaining[i])
-			dopermute(permutation)
+			backtrack(permutation)
 
 			last = permutation[len(permutation)-1]
 			permutation = permutation[:len(permutation)-1]
 		}
 	}
 
-	dopermute([]int{})
+	backtrack([]int{})
 	return permutations
 }
