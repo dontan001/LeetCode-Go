@@ -13,9 +13,7 @@ func SpiralOrder(matrix [][]int) []int {
 		matrix[y][x] = 101
 
 		if !(0 <= x+dx && x+dx < cols && 0 <= y+dy && y+dy < rows) || matrix[y+dy][x+dx] == 101 {
-			t := dx
-			dx = -dy
-			dy = t
+			dx, dy = -dy, dx
 		}
 
 		x += dx
