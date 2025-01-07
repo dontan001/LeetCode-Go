@@ -27,3 +27,20 @@ func CanJump(nums []int) bool {
 
 	return can
 }
+
+func CanJumpV2(nums []int) bool {
+	var remain int = 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] >= remain {
+			remain = nums[i]
+		} else {
+			remain--
+		}
+
+		if remain <= 0 && i < len(nums)-1 {
+			return false
+		}
+	}
+
+	return true
+}
