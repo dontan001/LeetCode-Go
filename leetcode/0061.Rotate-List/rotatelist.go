@@ -9,6 +9,10 @@ package leetcode
  */
 func RotateRight(head *ListNode, k int) *ListNode {
 
+	if head == nil || head.Next == nil || k == 0 {
+		return head
+	}
+
 	var total int = 0
 	current := head
 	for current != nil {
@@ -16,9 +20,6 @@ func RotateRight(head *ListNode, k int) *ListNode {
 		current = current.Next
 	}
 
-	if total == 0 {
-		return head
-	}
 	k = k % total
 	if k == 0 {
 		return head
