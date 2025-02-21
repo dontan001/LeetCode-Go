@@ -12,12 +12,12 @@ func SearchMatrix(matrix [][]int, target int) bool {
 	}
 
 	var targetRow int = -1
-	begin, end := 0, row-1
-	for begin <= end {
-		m := (begin + end) / 2
-		if m == begin {
-			if target >= matrix[end][0] {
-				targetRow = end
+	top, botton := 0, row-1
+	for top <= botton {
+		m := (top + botton) / 2
+		if m == top {
+			if target >= matrix[botton][0] {
+				targetRow = botton
 			} else {
 				targetRow = m
 			}
@@ -25,29 +25,29 @@ func SearchMatrix(matrix [][]int, target int) bool {
 		}
 
 		if target >= matrix[m][0] {
-			begin = m
+			top = m
 		} else {
-			end = m
+			botton = m
 		}
 	}
 
 	if target > matrix[targetRow][col-1] {
 		return false
 	}
-	begin, end = 0, col-1
-	for begin <= end {
-		m := (begin + end) / 2
-		if m == begin {
-			if target == matrix[targetRow][begin] || target == matrix[targetRow][end] {
+	left, right := 0, col-1
+	for left <= right {
+		m := (left + right) / 2
+		if m == left {
+			if target == matrix[targetRow][left] || target == matrix[targetRow][right] {
 				return true
 			}
 			break
 		}
 
 		if target >= matrix[targetRow][m] {
-			begin = m
+			left = m
 		} else {
-			end = m
+			right = m
 		}
 	}
 
