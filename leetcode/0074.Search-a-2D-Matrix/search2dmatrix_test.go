@@ -16,4 +16,17 @@ func TestSearchMatrix(t *testing.T) {
 		exist := SearchMatrix(matrix, target)
 		t.Logf("found: %t", exist)
 	})
+
+	t.Run("case 2", func(t *testing.T) {
+
+		matrix := [][]int{
+			{1, 3, 5, 7},
+			{10, 11, 16, 20},
+			{23, 30, 34, 50},
+		}
+		target := 8
+
+		exist := SearchMatrix2(matrix, target)
+		t.Logf("found: %t", exist)
+	})
 }
