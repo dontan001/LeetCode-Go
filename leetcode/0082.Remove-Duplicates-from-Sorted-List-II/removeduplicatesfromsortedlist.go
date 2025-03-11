@@ -6,27 +6,27 @@ func DeleteDuplicates(head *ListNode) *ListNode {
 		return head
 	}
 
-	var current, previous, h, tail *ListNode = head, head, nil, nil
+	var current, front, h, last *ListNode = head, head, nil, nil
 	var counter int = 1
 	for current != nil {
 		current = current.Next
-		if current != nil && current.Val == previous.Val {
+		if current != nil && current.Val == front.Val {
 			counter++
 		} else {
 			if counter == 1 {
-				if tail == nil {
-					tail = previous
-					h = tail
+				if last == nil {
+					last = front
+					h = last
 				} else {
-					tail.Next = previous
-					tail = previous
+					last.Next = front
+					last = front
 				}
 			}
 
-			previous = current
+			front = current
 			counter = 1
-			if current == nil && tail != nil {
-				tail.Next = nil
+			if current == nil && last != nil {
+				last.Next = nil
 			}
 		}
 	}
