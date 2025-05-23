@@ -12,4 +12,13 @@ func TestNumDecodings(t *testing.T) {
 			t.Errorf("expected: %v got: %v", want, actual)
 		}
 	})
+
+	t.Run("test two", func(t *testing.T) {
+		input := "12"
+		want := 2
+		actual := NumDecodings2(input)
+		if want != actual {
+			t.Errorf("expected: %v got: %v", want, actual)
+		}
+	})
 }

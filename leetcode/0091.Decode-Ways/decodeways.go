@@ -32,3 +32,24 @@ func NumDecodings(s string) int {
 	numdec(s)
 	return num
 }
+
+func NumDecodings2(s string) int {
+
+	var dp []int = make([]int, len(s)+1)
+	dp[0] = 1
+	for i := 0; i < len(s); i++ {
+		one := s[i] - '0'
+		if one > 0 && one <= 9 {
+			dp[i+1] += dp[i]
+		}
+
+		if i-1 >= 0 {
+			two, _ := strconv.Atoi(s[i-1 : i+1])
+			if two >= 10 && two <= 26 {
+				dp[i+1] += dp[i-1]
+			}
+		}
+	}
+
+	return dp[len(s)]
+}
