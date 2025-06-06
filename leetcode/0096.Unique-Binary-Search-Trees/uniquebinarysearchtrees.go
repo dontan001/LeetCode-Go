@@ -23,3 +23,15 @@ func NumTrees(n int) int {
 
 	return countBSTrees(1, n)
 }
+
+func NumTreesDP(n int) int {
+	var dp []int = make([]int, n+1)
+	dp[0], dp[1] = 1, 1
+	for i := 2; i <= n; i++ {
+		for j := 1; j <= i; j++ {
+			dp[i] += dp[j-1] * dp[i-j]
+		}
+	}
+
+	return dp[n]
+}
