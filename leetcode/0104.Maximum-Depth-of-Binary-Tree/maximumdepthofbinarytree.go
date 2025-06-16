@@ -23,3 +23,17 @@ func MaxDepth(root *TreeNode) int {
 
 	return depth
 }
+
+func MaxDepthRecursive(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	var left = MaxDepthRecursive(root.Left)
+	var right = MaxDepthRecursive(root.Right)
+	if left >= right {
+		return left + 1
+	} else {
+		return right + 1
+	}
+}
