@@ -10,10 +10,10 @@ func TwoAddV1(one *ListNode, another *ListNode) *ListNode {
 	carry := 0
 	for currentOne != nil || currentAnother != nil {
 		if currentOne == nil {
-			currentOne = &ListNode{0, nil}
+			currentOne = &ListNode{Val: 0, Next: nil}
 		}
 		if currentAnother == nil {
-			currentAnother = &ListNode{0, nil}
+			currentAnother = &ListNode{Val: 0, Next: nil}
 		}
 
 		currentDigit := currentOne.Val + currentAnother.Val + carry
@@ -25,7 +25,7 @@ func TwoAddV1(one *ListNode, another *ListNode) *ListNode {
 		}
 
 		currentHead.Val = currentDigit
-		currentHead.Next = &ListNode{0, nil}
+		currentHead.Next = &ListNode{Val: 0, Next: nil}
 		if currentOne.Next == nil && currentAnother.Next == nil {
 			currentHead.Next.Val = carry
 			break
