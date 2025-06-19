@@ -19,12 +19,10 @@ func LevelOrderBottom(root *TreeNode) [][]int {
 				queueNext = append(queueNext, node.Right)
 			}
 		}
-		results = append(results, result)
-		queue, queueNext = queueNext, []*TreeNode{}
-	}
 
-	for i, j := 0, len(results); i < j; i, j = i+1, j-1 {
-		results[i], results[j] = results[j], results[i]
+		var tmp = [][]int{result}
+		results = append(tmp, results...)
+		queue, queueNext = queueNext, []*TreeNode{}
 	}
 
 	return results
